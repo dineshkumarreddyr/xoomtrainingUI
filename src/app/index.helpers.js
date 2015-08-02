@@ -8,6 +8,7 @@
 	.module('xoomwebapp')
 	.value('$xtAppConfig',{
 		apiUrl: 'http://54.69.43.76:9545/',
+		//apiUrl: 'http://localhost:9545/',
 		fullname: '',
 		email: '',
 		country: '',

@@ -20,7 +20,8 @@
     })
     .state('home.list',{
       url:'/courses',
-      templateUrl:'app/components/courselist/xoom.list.html'
+      templateUrl:'app/components/courselist/xoom.list.html',
+      controller:'CourseListController'
     })
     .state('home.detail',{
       url:'/coursedetails/:courseId',
