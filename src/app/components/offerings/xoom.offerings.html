@@ -3,11 +3,11 @@
 	<div class="usphone">
 		<h4 class="text-center">US: +1-32144543 &nbsp;&nbsp; IN: +9140-40183355</h4>
 	</div>
-	<div class="textbanner container-fluid">
+	<div class="textbanner text-center container-fluid">
 		<div class="row">
-			<div class="text-center col-md-12 col-lg-12">
-				<h1 class="text-center">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</h1>
-				<input type="text" placeholder="Eg: enter your favourite course" />
+			<div class="col-md-12 col-lg-12">
+				<h1>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</h1>
+				<input type="text" ng-model="searchword" ng-keypress="keyword($event)" placeholder="Searh your course" />
 				<i class="fa fa-search"></i>
 			</div>
 		</div>
@@ -93,7 +93,7 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="row text-center">
-		<button class="btn btn-info btn-lg subscribebutton" type="submit">Browse all courses</button>
+	<a ui-sref="home.list" class="btn btn-info btn-lg subscribebutton">Browse all courses</a>
 	</div>
 </div>
 <div class="home-quote margin-top-20">

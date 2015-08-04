@@ -19,7 +19,7 @@
       controller:'OfferingsController'
     })
     .state('home.list',{
-      url:'/courses',
+      url:'/courses?s',
       templateUrl:'app/components/courselist/xoom.list.html',
       controller:'CourseListController'
     })

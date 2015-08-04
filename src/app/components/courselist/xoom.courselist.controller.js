@@ -5,10 +5,11 @@
 	.module('xoomwebapp')
 	.controller('CourseListController',courselistController);
 
-	function courselistController($scope,$http,$xtAppConfig,$log){
+	function courselistController($scope,$http,$xtAppConfig,$log,$state,$stateParams){
 
 		$scope.allCourses = [];
 		$scope.allCourseNames = [];
+
 		// Scope - Default page count
 		var pagesize = 1;
 		var widgetperPage = 8;
@@ -40,8 +41,14 @@
 				}).error(function(res,status){
 					$log.error(status+" - "+res);
 				});
+			},
+			this.checkSearch = function(){
+				if($stateParams && $stateParams.s!=undefined && $stateParams.s!=null && $stateParams.s!=""){
+					$scope.searchword = $stateParams.s;
+				}
 			}
 		};
 		(new init()).getAllCourses();
+		(new init()).checkSearch();
 	}
 })();

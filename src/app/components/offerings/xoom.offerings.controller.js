@@ -7,7 +7,7 @@
 	angular.module('xoomwebapp')
 	.controller('OfferingsController',offeringsController);
 	
-	function offeringsController($scope, $http, $xtAppConfig, $xtAppVariables, $stateParams,$SpinnerService,$timeout) {
+	function offeringsController($scope, $http, $xtAppConfig, $xtAppVariables, $stateParams,$SpinnerService,$timeout,$state) {
 
         //Default array for course list
         $scope.allCourses = [];
@@ -27,5 +27,12 @@
         	$scope.allCourses = [];
         	$SpinnerService.busyOff();
         });
+
+
+        $scope.keyword = function(e){
+            if(e && e.which===13){
+                $state.go('home.list',{s:$scope.searchword});
+            }
+        }
     }
 })();

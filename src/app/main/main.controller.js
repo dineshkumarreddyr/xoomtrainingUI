@@ -82,68 +82,79 @@
 
   $scope.signup = function () {
     var data = {};
-                // TurnOn Spinner
-                $SpinnerService.busyOn();
-                try {
-                  if ($scope.isSignupValid()) {
-                    if (!validatePassword()) {
-                      $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.noPassmatch };
-                            // TurnOff Spinner
-                            $SpinnerService.busyOff();
-                            return;
-                          }
-                          data.firstname = $scope.firstName;
-                          data.lastname = $scope.LastName;
-                          data.email = $scope.emailAddress;
-                          data.userpassword = $scope.userPassword;
-                          data.phonenumber = $scope.mobileNumber;
-                          if ($scope.countryitems.length > 0) {
-                            var item = _.filter($scope.countryitems, function (e) {
-                              return e.countryid === $scope.usercountry;
-                            });
-                            if (item !== undefined){
-                              data.country = item[0].countryname;
-                            }
-                          }
-                          else{
-                            data.country = $scope.usercountry;
-                          }
-                          if (data.country != null && data.country.indexOf('India') > -1){
-                            data.userindian = 1;
-                          }
-                          else{
-                            data.userindian = 0;
-                          }
-                          data.username = $scope.emailAddress;
-                          $http.post($xtAppConfig.apiUrl + 'signup', data).success(function (res, status, headers, config) {
-                            if (res !== undefined && res.status !== undefined && res.status.indexOf('success') > -1) {
-                              $scope.alertOperation = { alertDisplay: true, class: 'alert alert-success', message: $xtAppVariables.accountSuccess };
-                                // TurnOff Spinner
-                                $SpinnerService.busyOff();
-                              }
-                              else if (res != undefined && res.status != undefined && res.status.indexOf('error') > -1) {
-                                switch (res.ecode) {
-                                  case 'e1':
-                                  $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountExists };
-                                        // TurnOff Spinner
-                                        $SpinnerService.busyOff();
-                                        break;
-                                      }
-                                    }
-                                  }).error(function (res, status, headers, config) {
-                                    $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
-                            // TurnOff Spinner
-                            $SpinnerService.busyOff();
-                          });
-                                }
-                                else {
-                                  $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountMandatory };
-                        // TurnOff Spinner
-                        $SpinnerService.busyOff();
-                      }
-                    }
-                    catch (e) {
-                      $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
+    var leadSquare = {};
+    $SpinnerService.busyOn();
+    try {
+      if ($scope.isSignupValid()) {
+        if (!validatePassword()) {
+          $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.noPassmatch };
+          $SpinnerService.busyOff();
+          return;
+        }
+        data.firstname = leadSquare.FirstName = $scope.firstName;
+        data.lastname = leadSquare.LastName = $scope.LastName;
+        data.email = leadSquare.EmailAddress = $scope.emailAddress;
+        data.userpassword = leadSquare.password = $scope.userPassword;
+        data.phonenumber = leadSquare.Phone = $scope.mobileNumber;
+        leadSquare.mx_City = $scope.signupcity;
+        leadSquare.mx_State = $scope.signupstate;
+        data.country = leadSquare.mx_Country = $scope.usercountry;
+        leadSquare.MXHOrgCode = '5367';
+        leadSquare.MXHLandingPageId = '1cdd9b00-3a6d-11e5-981b-22000a9700b4';
+        leadSquare.MXHFormBehaviour = '0';
+        leadSquare.MXHFormDataTransfer = '0';
+        leadSquare.MXHRedirectUrl = 'http://www.crestdzines.com/xoomwebapp';
+        leadSquare.MXHAsc = '5';
+        leadSquare.MXHPageTitle = 'Xoom Trainings';
+        leadSquare.MXHOutputMessagePosition = '0';
+        leadSquare.MXHIsExternallyUsed = '1';
+        if($scope.usercountry!=undefined && $scope.usercountry.indexOf('India')>-1){
+          data.userindian = 1;
+        }
+        else{
+          data.userindian = 0;
+        }
+        data.username = $scope.emailAddress;
+        $http.post($xtAppConfig.apiUrl + 'signup', data).success(function (res, status, headers, config) {
+          if (res !== undefined && res.status !== undefined && res.status.indexOf('success') > -1) {
+            $scope.alertOperation = { alertDisplay: true, class: 'alert alert-success', message: $xtAppVariables.accountSuccess };
+            $SpinnerService.busyOff();
+          }
+          else if (res != undefined && res.status != undefined && res.status.indexOf('error') > -1) {
+            switch (res.ecode) {
+              case 'e1':
+              $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountExists };
+
+              $SpinnerService.busyOff();
+              break;
+            }
+          }
+        }).error(function (res, status, headers, config) {
+          $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
+          $SpinnerService.busyOff();
+        });
+
+        // $http({
+        //   method:'POST',
+        //   data:leadSquare,
+        //   headers:{
+        //     'content-Type':'application/x-www-form-urlencoded'
+        //   },
+        //   url:'https://web.mxradon.com/t/FormTracker.aspx'
+        // }).success(function(res,status){
+        //   debugger;
+        // }).error(function(res,status){
+        //   debugger;
+        // });
+      }
+      else {
+        $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountMandatory };
+
+        $SpinnerService.busyOff();
+      }
+    }
+    catch (e) {
+      $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
                     // TurnOff Spinner
                     $SpinnerService.busyOff();
                   }
