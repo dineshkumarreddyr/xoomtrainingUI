@@ -98,27 +98,59 @@
 </nav>
 <div ui-view></div>
 <div class="topmargin1">
-	<img src="assets/images/aboutus.png" alt="aboutus" class="img-responsive aboutusimage">
-	
+	<div id="gmap_canvas">
+	</div>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 aboutuspadding">
-			<h3 class="text-center">ABOUT US</h3><br/>
-			<span>We are Xoom Trainings - Experts in providing top-notch training solutions.</span>
-			<span>We deliver quality training solutions for our customers across the globe. Ever since the establishment of our organization in the year 2004, we have been working towards making training much more accessible to one and all. We have always been at the forefront in providing customized training solutions so as to help the learners get what they really yearn for. We, with our team of experts, have already set a strong foothold in the IT Trainings and are regarded to be the best in the industry in providing a plethora of training solutions.</span>
-			<h5>Why zero in on us for IT Training Solutions?</h5>
-			<span>We have unprecedented expertise in providing training in courses related to Microsoft, Oracle, SAP, SAS, Java, Hadoop, TIBCO, Testing Tools or other specialised courses as per the requirements of our clients. We always stress on delivering remarkably the best training solutions for our customers.</span>
-			<span>Our training solutions rightly expresses our unmatchable finesse which we have accrue, providing the training all these years for our global customers. </span>
-			<h5>Team @ Xoom Trainings</h5>
-			<span>We have a team of tech-savvy professionals, trainers who are incomparably talented in providing the training (in accordance to the modernized pedagogical approach). Our experts are vibrantly au fait at making learning a wonderful experience through a combination of the object-oriented training strategies and innovational methodologies of problem-solving attitude.</span>
-			<h5>Yearning for quality-based, affordable training solutions? </h5>
-			<span>Rooting out the barriers from your way to success by providing you effective training solutions. Just get on with wonderful learning experience only at XoomTrainings.com. </span>
-			<span>If you are the one who is on the lookout for quality training then it is quintessential that you should get in touch with us. Just get in touch with us to know more about us. Give us a call or request a callback from one of team experts today..</span>
+		<div class="col-md-8">
+			<h4>Our Address</h4>
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>INDIA</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					Flat #102, SAI KARTHICK NILAYAM<br>
+					ADDAGUTTA, OPP JNTU,<br>
+					PRAGATHI NAGAR ROAD, KPHB COLONY<br>
+					HYDERABAD-500 072<br>
+					TELANGANA<br>
+					PHONE:040-4018 3355<br>
+					+91-7093502092,91<br> 
 
+				</div>
+				<div class="col-lg-4">
+					<h4>USA</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					PENNSYLVANIA<br>
+					USA<br>
+					Phone:+1-610-686-8077<br>
+					+1-610-990-3055<br>
+				</div>
+				<div class="col-lg-4">
+					<h4>UK</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					UK</br>
+					Phone:+1-610-686-8077<br>
+					+1-610-990-3055<br>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<h4>Send a Message</h4>
+			<input name="firstname" type="text" placeholder="Enter Your name" class="form-control inputmethods">
+			<input name="lastname" type="text" placeholder="Last Name" class="form-control inputmethods">
+			<input name="email" type="text" placeholder="Email address" class="form-control inputmethods">
+			<input name="mobile number" type="text" placeholder="mobile number" class="form-control inputmethods">
+			<textarea rows="2" placeholder="any queries....?" class="form-control inputmethods textareaquery" style=""></textarea>
+			<div class="row">
+				<div class="text-center xoomviewall"><a href="#">Query</a></div>
+			</div>
 		</div>
 	</div>
 </div>
+
+
 
 <div class="foot-main">
 	<div class="container no-pad">
@@ -132,7 +164,7 @@
 					<li><a href="home/checkout">Payments</a></li>
 					<li><a href="http://www.xoomtrainings.com/blog/">Blog</a></li>
 					<li><a href="careers">Careers </a></li>
-					 <li><a href="contact">Contact</a></li>
+					<li><a href="contact">Contact</a></li>
 				</ul>
 			</div>
 			
@@ -218,22 +250,23 @@
 		</div>
 	</div>
 </div>
-<script>
-	jQuery(document).ready(function() {
-		var offset = 250;
-		var duration = 300;
-		jQuery(window).scroll(function() {
-			if (jQuery(this).scrollTop() > offset) {
-				jQuery('.back-to-top').fadeIn(duration);
-			} else {
-				jQuery('.back-to-top').fadeOut(duration);
-			}
-		});
+<script> 
+	(function(){
+		function init_map() {
+			var var_location = new google.maps.LatLng(17.498573, 78.393775);
 
-		jQuery('.back-to-top').click(function(event) {
-			event.preventDefault();
-			jQuery('html, body').animate({scrollTop: 0}, duration);
-			return false;
-		})
-	});
+			var var_mapoptions = {
+				center: var_location,
+				zoom: 14
+			};
+			var var_marker = new google.maps.Marker({
+				position: var_location,
+				map: var_map,
+				title:"innovinitsolution"});
+			var var_map = new google.maps.Map(document.getElementById("gmap_canvas"),
+				var_mapoptions);
+			var_marker.setMap(var_map); 
+		}
+		google.maps.event.addDomListener(window, 'load', init_map);
+	})();
 </script>

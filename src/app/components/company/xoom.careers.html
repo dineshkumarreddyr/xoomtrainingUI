@@ -98,25 +98,30 @@
 </nav>
 <div ui-view></div>
 <div class="topmargin1">
-	<img src="assets/images/aboutus.png" alt="aboutus" class="img-responsive aboutusimage">
+	<img src="assets/images/careers.png" alt="career page" class="img-responsive aboutusimage">
 	
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 aboutuspadding">
-			<h3 class="text-center">ABOUT US</h3><br/>
-			<span>We are Xoom Trainings - Experts in providing top-notch training solutions.</span>
-			<span>We deliver quality training solutions for our customers across the globe. Ever since the establishment of our organization in the year 2004, we have been working towards making training much more accessible to one and all. We have always been at the forefront in providing customized training solutions so as to help the learners get what they really yearn for. We, with our team of experts, have already set a strong foothold in the IT Trainings and are regarded to be the best in the industry in providing a plethora of training solutions.</span>
-			<h5>Why zero in on us for IT Training Solutions?</h5>
-			<span>We have unprecedented expertise in providing training in courses related to Microsoft, Oracle, SAP, SAS, Java, Hadoop, TIBCO, Testing Tools or other specialised courses as per the requirements of our clients. We always stress on delivering remarkably the best training solutions for our customers.</span>
-			<span>Our training solutions rightly expresses our unmatchable finesse which we have accrue, providing the training all these years for our global customers. </span>
-			<h5>Team @ Xoom Trainings</h5>
-			<span>We have a team of tech-savvy professionals, trainers who are incomparably talented in providing the training (in accordance to the modernized pedagogical approach). Our experts are vibrantly au fait at making learning a wonderful experience through a combination of the object-oriented training strategies and innovational methodologies of problem-solving attitude.</span>
-			<h5>Yearning for quality-based, affordable training solutions? </h5>
-			<span>Rooting out the barriers from your way to success by providing you effective training solutions. Just get on with wonderful learning experience only at XoomTrainings.com. </span>
-			<span>If you are the one who is on the lookout for quality training then it is quintessential that you should get in touch with us. Just get in touch with us to know more about us. Give us a call or request a callback from one of team experts today..</span>
-
+		<div class="col-md-12">
+			<h3 class="text-center">CURRENT OPENINGS</h3><br/>
 		</div>
+		<div class="col-md-6">
+			<div class="marginbottom">
+				<h2 class="text-left">Bussiness Development Excuetive</h2>
+				<span class="comment more">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="marginbottom">
+				<h2 class="text-left">Lorem ipsum</h2>
+				<span class="comment more">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</span>
+			</div>
+		</div>		
 	</div>
 </div>
 
@@ -236,4 +241,39 @@
 			return false;
 		})
 	});
+</script>
+<script>
+$(document).ready(function() {
+    var showChar = 100;
+    var ellipsestext = "...";
+    var moretext = "less";
+    var lesstext = "more............>";
+    $('.more').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar-1, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
 </script>

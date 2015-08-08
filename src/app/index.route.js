@@ -46,6 +46,18 @@
     .state('about',{
       url:'/aboutus',
       templateUrl:'app/components/company/xoom.about.html'
+    })
+    .state('contact',{
+      url:'/contactus',
+      templateUrl:'app/components/company/xoom.contact.html'
+    })
+    .state('services',{
+      url:'/services',
+      templateUrl:'app/components/company/xoom.services.html'
+    })
+    .state('careers',{
+      url:'/careers',
+      templateUrl:'app/components/company/xoom.careers.html'
     });
 
     $urlRouterProvider.otherwise('/home/offerings');

@@ -1,18 +1,79 @@
 <div class="container-fluid home-banner">
 	<img src="assets/images/books.jpg" class="img-responsive" alt="Background image" />
 	<div class="usphone">
-		<h4 class="text-center">US: +1-32144543 &nbsp;&nbsp; IN: +9140-40183355</h4>
+		<h4 class="text-center">US: +1-610-686-8077 &nbsp;&nbsp; IN: +91-40-40183355</h4>
 	</div>
-	<div class="textbanner text-center container-fluid">
+
+	<div class="textbanner container-fluid">
 		<div class="row">
-			<div class="col-md-12 col-lg-12">
-				<h1>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</h1>
-				<input type="text" ng-model="searchword" ng-keypress="keyword($event)" placeholder="Searh your course" />
-				<i class="fa fa-search"></i>
+			<h1 class="text-center">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</h1>
+			<div class="browse-course">
+
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" ng-model="searchword" ng-keypress="keyword($event)" placeholder="Search Courses" class="ng-pristine ng-valid ng-touched" style="">
+
+						<i class="fa fa-search"></i>
+					</div>
+					<div class="col-md-1 orword">
+						<span>OR</span>
+					</div>
+
+					<div class="col-md-5"> 
+
+					<a class="btn btn-info btn-lg subscribebuttonbanner" ui-sref="home.list">Browse all courses</a> 
+					</div>
+				</div>
+				<div class="row learners">
+					<div class="col-md-3 allignment">
+						<h4>1234</h4>
+						<p>Lorem Ipsum </p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+ Hrs</h4>
+						<p>Lorem Ipsum</p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+ </h4>
+						<p>Lorem Ipsum</p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+</h4>
+						<p>Lorem</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row testing">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Sap" style="">Sap</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Java</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Hadoop</a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Sap" style="">Cognos</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Bigdata</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Pega</a>
+						</div>
+					</div> 
+				</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="slidedown text-center">
 		<div>
 			<a href="/home/offerings#popular">
@@ -73,7 +134,7 @@
 						</div>
 						<div class="course-title">{{course.xtcoursename}}</div>
 						<div class="clearfix course-counts">
-							<div class="col-md-7 greenText">$ {{course.xtusprice}} | Rs {{course.xtinrprice}}</div>
+							<div class="col-md-7 greenText"><span>$ {{course.xtusprice}}</span> <span>| Rs {{course.xtinrprice}}</span></div>
 							<div class="col-md-5 hours"><img src="assets/images/hours.png" alt="hours">24 Hours</div>
 						</div>
 						<div class="clearfix course-bottom">
@@ -93,7 +154,7 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="row text-center">
-	<a ui-sref="home.list" class="btn btn-info btn-lg subscribebutton">Browse all courses</a>
+		<a ui-sref="home.list" class="btn btn-info btn-lg subscribebutton">Browse all courses</a>
 	</div>
 </div>
 <div class="home-quote margin-top-20">

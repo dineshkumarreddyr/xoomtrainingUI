@@ -28,6 +28,10 @@
         	$SpinnerService.busyOff();
         });
 
+        $scope.indian = function(){
+            return $xtAppConfig.country.indexOf('India')>-1 ? true : false;
+        }
+
 
         $scope.keyword = function(e){
             if(e && e.which===13){
