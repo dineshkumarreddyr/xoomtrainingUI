@@ -55,6 +55,22 @@
             });
         }
 
+        $scope.indian = true;
+        $scope.othercountry = true;
+
+        $scope.$parent.$watch('userindian',function(v){
+            if(v!=undefined){
+                if(v){
+                    $scope.indian = true;
+                    $scope.othercountry = false;
+                }
+                else{
+                    $scope.indian = false;
+                    $scope.othercountry = true;
+                }
+            }
+        });
+
         $scope.enrollCourse = function () {
         	var data = {};
         	try {

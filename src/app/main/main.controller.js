@@ -13,6 +13,8 @@
     //Cart items
     $scope.cartItems = $xtAppConfig.cartitemCount;
 
+    $scope.userindian = null;
+
     $scope.updateCartItems = function (count) {
       try {
         $cookies.put('cartitems', count);
@@ -146,15 +148,15 @@
         // }).error(function(res,status){
         //   debugger;
         // });
-      }
-      else {
-        $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountMandatory };
+}
+else {
+  $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.accountMandatory };
 
-        $SpinnerService.busyOff();
-      }
-    }
-    catch (e) {
-      $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
+  $SpinnerService.busyOff();
+}
+}
+catch (e) {
+  $scope.alertOperation = { alertDisplay: true, class: 'alert alert-danger', message: $xtAppVariables.apiFail };
                     // TurnOff Spinner
                     $SpinnerService.busyOff();
                   }
@@ -176,6 +178,13 @@
                     $cookies.put('email', res.records[0].xtuseremail);
                     $cookies.put('country', res.records[0].xtusercountry);
                     $cookies.put('userid', res.records[0].xtuserid);
+
+                    if(res.records[0].xtusercountry.indexOf('India')>-1){
+                      $scope.userindian = true;
+                    }
+                    else{
+                      $scope.userindian = false;
+                    }
                     //Storing the data to local variables
                     $managecookies.bind();
                     //Sign in Fn

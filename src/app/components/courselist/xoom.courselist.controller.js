@@ -31,6 +31,22 @@
 			widgetperPage = 8;
 		}
 
+		$scope.indian = true;
+		$scope.othercountry = true;
+
+		$scope.$parent.$watch('userindian',function(v){
+			if(v!=undefined){
+				if(v){
+					$scope.indian = true;
+					$scope.othercountry = false;
+				}
+				else{
+					$scope.indian = false;
+					$scope.othercountry = true;
+				}
+			}
+		});
+
 		function init(){
 			this.getAllCourses = function(){
 				$http.get($xtAppConfig.apiUrl+'courselist').success(function(res,status){

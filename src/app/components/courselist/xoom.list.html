@@ -49,7 +49,7 @@
 										Lifetime Access<br/>
 									</div>
 									<div class="clearfix course-counts">
-										<div class="col-md-7 greenText">$ {{item.xtusprice}}/- | Rs {{item.xtinrprice}}/-</div>
+										<div class="col-md-7 greenText"><span ng-show="othercountry">$ {{item.xtusprice}}/-</span> <span ng-show="othercountry && indian">|</span><span ng-show="indian"> Rs {{item.xtinrprice}}/-</span></div>
 										<div class="col-md-5 hours">
 											<img src="assets/images/hours.png" alt="hours">{{item.xtcourseduration}} Hours
 										</div>

@@ -22,6 +22,20 @@
         	$log.error(res);
         });
 
+        $scope.indian = true;
+        $scope.othercountry = true;
+
+        $scope.$parent.$watch('userindian',function(v){
+            if(v!=undefined){
+                if(v){
+                    $scope.priceselected = 'inr';
+                }
+                else{
+                    $scope.priceselected = 'usd';
+                }
+            }
+        });
+
 
         //Remove cart item
         $scope.removeCartItem = function (index,id) {
