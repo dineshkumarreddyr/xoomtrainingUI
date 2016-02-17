@@ -1,0 +1,272 @@
+<div class="modal fade access-popup bs-example-modal-lg" signup-modal tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Signup / Login to Continue</h4>
+			</div>
+			<div class="modal-body clearfix">
+				<xt-alert values="alertOperation" ng-show="alertOperation.alertDisplay"></xt-alert>
+				<div class="col-md-6">
+					<div class="col-md-12"><h2>Signup</h2></div>
+					<form id="signup-form" role="form">
+						<div class="form-group col-md-6">
+							<input type="text" name="firstname" id="firstname" tabindex="1" title="Enter first name" class="form-control" placeholder="Firstname" value="" ng-model="firstName">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" name="lastname" id="lastname" tabindex="1" title="Enter last name" class="form-control" placeholder="Lastname" ng-model="LastName">
+						</div>
+						<div class="form-group col-md-12">
+							<select class="form-control" ng-model="usercountry" tabindex="1" ng-options="item.countryid as item.countryname for item in countryitems">
+								<option value="">Select country</option>
+							</select>
+						</div>
+						<div class="form-group col-md-12">
+							<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email address" ng-model="emailAddress">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Password" ng-model="userPassword">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="confirm password" id="cpassword" tabindex="1" class="form-control" placeholder="Confirm Password" ng-model="confirmPassword">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="text" name="mobile" id="mobile" tabindex="1" class="form-control" placeholder="Mobile number" ng-model="mobileNumber">
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<input type="submit" name="login-submit" id="signup-submit" tabindex="1" class="form-control btn btns col-md-12" value="Signup" ng-click="signup()">
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--login form starts-->
+				<div class="col-md-6">
+					<div class="col-md-12"><h2>Existing Users</h2></div>
+					<form id="signup-form" role="form">
+						<div class="form-group col-md-12">
+							<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email address" ng-model="loginUserName">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Password" ng-model="loginPassword">
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<input type="submit" name="login-submit" id="signup-submit" tabindex="1" class="form-control btn btns col-md-12" value="LogIn" ng-click="signin()">
+							</div>
+						</div>
+						<div class="forgot col-md-12" data-dismiss="modal">Forgot Password <a ui-sref="home.forgotpassword">click here</a></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--login modal ends-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+				</button>
+				<a class="navbar-brand" ui-sref="home.offerings"><img src="assets/images/logo.png" alt="XoomTrainings logo"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a ui-sref="about">About Us</a></li>
+					<li><a ui-sref="home.list">Courses</a></li>
+					<li><a href="#" ng-click="checkout(cartItems)">Cart <img src="assets/images/cart.png" alt="cart icon" /><span>{{cartItems}}</span></a></li>
+					<li  ng-show="userloggedin">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, {{fullname}} &nbsp;<i class="fa fa-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a ui-sref='home.myaccount'>Manage Account</a></li>
+							<li><a href="#" ng-click="signout()">Sign out</a></li>
+						</ul>
+					</li>
+					<li ng-show="!userloggedin"><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Signin/Signup</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<div ui-view></div>
+<div class="topmargin1">
+	<div id="gmap_canvas">
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h4>Our Address</h4>
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>INDIA</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					Flat #102, SAI KARTHICK NILAYAM<br>
+					ADDAGUTTA, OPP JNTU,<br>
+					PRAGATHI NAGAR ROAD, KPHB COLONY<br>
+					HYDERABAD-500 072<br>
+					TELANGANA<br>
+					PHONE:040-4018 3355<br>
+					+91-7093502092,91<br> 
+
+				</div>
+				<div class="col-lg-4">
+					<h4>USA</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					PENNSYLVANIA<br>
+					USA<br>
+					Phone:+1-610-686-8077<br>
+					+1-610-990-3055<br>
+				</div>
+				<div class="col-lg-4">
+					<h4>UK</h4>
+					INNOVIN IT SOLUTIONS PVT LTD<br>
+					UK</br>
+					Phone:+1-610-686-8077<br>
+					+1-610-990-3055<br>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<h4>Send a Message</h4>
+			<input name="firstname" type="text" placeholder="Enter Your name" class="form-control inputmethods">
+			<input name="lastname" type="text" placeholder="Last Name" class="form-control inputmethods">
+			<input name="email" type="text" placeholder="Email address" class="form-control inputmethods">
+			<input name="mobile number" type="text" placeholder="mobile number" class="form-control inputmethods">
+			<textarea rows="2" placeholder="any queries....?" class="form-control inputmethods textareaquery" style=""></textarea>
+			<div class="row">
+				<div class="text-center xoomviewall"><a href="#">Query</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="foot-main">
+	<div class="container no-pad">
+		<div class="row">
+			<div class="col-md-4">
+				<ul>
+					<h4>COURSES</h4>
+					<li><a href="#">Home</a></li>
+					<li><a href="aboutus">About US</a></li>
+					<li><a href="services">Services</a></li>
+					<li><a href="home/checkout">Payments</a></li>
+					<li><a href="http://www.xoomtrainings.com/blog/">Blog</a></li>
+					<li><a href="careers">Careers </a></li>
+					<li><a href="contact">Contact</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-md-4">
+				<ul>
+					<h4>REACH OUT TO US 27x7</h4>
+					<li>For courses related info: </li>
+					<li>+1-610-686-8077</li>
+					<li> Email us:   course@xoomtrainings.com</li>
+					<li>For Support: </li>
+					<li> +91-404-018-3355 (India)</li>
+					<li>Email us:  contact@xoomtrainings.com</li>
+				</ul>
+			</div>
+			<div class="col-md-4 text-center">
+				<h4>CONNECT WITH US</h4>
+				<a class="youtube pop-upper" title="share with: youtube" href="https://www.youtube.com/channel/UCcUqQgMe_uXB6WkgibwTz4g" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+
+				<a class="google-plus pop-upper" title="share with: google-plus" href="https://plus.google.com/u/0/110513710630949570051/posts" target="_blank">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+					</span> 
+				</a>
+
+				<a class="facebook pop-upper" title="share with: facebook" href="https://www.facebook.com/pages/Xoom-Trainings/436960616453388?fref=ts" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+					</span> 
+				</a>
+
+				<a class="twitter pop-upper" title="share with: twitter" href="https://twitter.com/xoomtrainings" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+
+				<a class="linkedin pop-upper" title="share with: linkedin" href="https://www.linkedin.com/in/xoomtrainings" target="_blank">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+				
+				<h4>For futer updates</h4>
+				<div class="row">
+					<div class="input-group ">
+						<input class="btn btn-lg subscribeinput" name="email" id="email" type="email" placeholder="Email id" required="">
+						<button class="btn btn-info btn-lg subscribebutton" type="submit">Subscribe</button>
+					</div>
+
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-lg-2 col-md-2 col-md-2 col-sm-2">
+					<a href="#" class="back-to-top"> <i class="fa fa-chevron-circle-up fa-3x"></i></a>
+				</div>
+			</div>
+		</div> 
+	</div>
+</div>
+<div class="col-md-12 payment text-center"> 
+	<p>100% Secure Payments. All major credit &#38; debit cards accepted Or Pay by Paypal.</p>
+	<img src="assets/images/debit.png" alt="debit" /> 
+</div>
+<div class="col-md-12 foot-copyright">
+	<div class="container no-pad">
+		<div class="row">
+			<div class="col-md-6">
+				<span>2014 - 2015 powered by Innovin IT Solutions Pvt. LTD.. All Rights Reserved. &nbsp; &nbsp;</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<a href="#">TERMS &#38; CONDITIONS</a> &nbsp;   
+				<a href="#">PRIVACY POLICY</a>  &nbsp;                  
+			</div>
+		</div>
+	</div>
+</div>
+<script> 
+	(function(){
+		function init_map() {
+			var var_location = new google.maps.LatLng(17.498573, 78.393775);
+
+			var var_mapoptions = {
+				center: var_location,
+				zoom: 14
+			};
+			var var_marker = new google.maps.Marker({
+				position: var_location,
+				map: var_map,
+				title:"innovinitsolution"});
+			var var_map = new google.maps.Map(document.getElementById("gmap_canvas"),
+				var_mapoptions);
+			var_marker.setMap(var_map); 
+		}
+		google.maps.event.addDomListener(window, 'load', init_map);
+	})();
+</script>

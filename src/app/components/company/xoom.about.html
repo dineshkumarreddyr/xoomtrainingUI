@@ -1,0 +1,239 @@
+<div class="modal fade access-popup bs-example-modal-lg" signup-modal tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Signup / Login to Continue</h4>
+			</div>
+			<div class="modal-body clearfix">
+				<xt-alert values="alertOperation" ng-show="alertOperation.alertDisplay"></xt-alert>
+				<div class="col-md-6">
+					<div class="col-md-12"><h2>Signup</h2></div>
+					<form id="signup-form" role="form">
+						<div class="form-group col-md-6">
+							<input type="text" name="firstname" id="firstname" tabindex="1" title="Enter first name" class="form-control" placeholder="Firstname" value="" ng-model="firstName">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" name="lastname" id="lastname" tabindex="1" title="Enter last name" class="form-control" placeholder="Lastname" ng-model="LastName">
+						</div>
+						<div class="form-group col-md-12">
+							<select class="form-control" ng-model="usercountry" tabindex="1" ng-options="item.countryid as item.countryname for item in countryitems">
+								<option value="">Select country</option>
+							</select>
+						</div>
+						<div class="form-group col-md-12">
+							<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email address" ng-model="emailAddress">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Password" ng-model="userPassword">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="confirm password" id="cpassword" tabindex="1" class="form-control" placeholder="Confirm Password" ng-model="confirmPassword">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="text" name="mobile" id="mobile" tabindex="1" class="form-control" placeholder="Mobile number" ng-model="mobileNumber">
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<input type="submit" name="login-submit" id="signup-submit" tabindex="1" class="form-control btn btns col-md-12" value="Signup" ng-click="signup()">
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--login form starts-->
+				<div class="col-md-6">
+					<div class="col-md-12"><h2>Existing Users</h2></div>
+					<form id="signup-form" role="form">
+						<div class="form-group col-md-12">
+							<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email address" ng-model="loginUserName">
+						</div>
+						<div class="form-group col-md-12">
+							<input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Password" ng-model="loginPassword">
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<input type="submit" name="login-submit" id="signup-submit" tabindex="1" class="form-control btn btns col-md-12" value="LogIn" ng-click="signin()">
+							</div>
+						</div>
+						<div class="forgot col-md-12" data-dismiss="modal">Forgot Password <a ui-sref="home.forgotpassword">click here</a></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--login modal ends-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+				</button>
+				<a class="navbar-brand" ui-sref="home.offerings"><img src="assets/images/logo.png" alt="XoomTrainings logo"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a ui-sref="about">About Us</a></li>
+					<li><a ui-sref="home.list">Courses</a></li>
+					<li><a href="#" ng-click="checkout(cartItems)">Cart <img src="assets/images/cart.png" alt="cart icon" /><span>{{cartItems}}</span></a></li>
+					<li  ng-show="userloggedin">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, {{fullname}} &nbsp;<i class="fa fa-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a ui-sref='home.myaccount'>Manage Account</a></li>
+							<li><a href="#" ng-click="signout()">Sign out</a></li>
+						</ul>
+					</li>
+					<li ng-show="!userloggedin"><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Signin/Signup</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<div ui-view></div>
+<div class="topmargin1">
+	<img src="assets/images/aboutus.png" alt="aboutus" class="img-responsive aboutusimage">
+	
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 aboutuspadding">
+			<h3 class="text-center">ABOUT US</h3><br/>
+			<span>We are Xoom Trainings - Experts in providing top-notch training solutions.</span>
+			<span>We deliver quality training solutions for our customers across the globe. Ever since the establishment of our organization in the year 2004, we have been working towards making training much more accessible to one and all. We have always been at the forefront in providing customized training solutions so as to help the learners get what they really yearn for. We, with our team of experts, have already set a strong foothold in the IT Trainings and are regarded to be the best in the industry in providing a plethora of training solutions.</span>
+			<h5>Why zero in on us for IT Training Solutions?</h5>
+			<span>We have unprecedented expertise in providing training in courses related to Microsoft, Oracle, SAP, SAS, Java, Hadoop, TIBCO, Testing Tools or other specialised courses as per the requirements of our clients. We always stress on delivering remarkably the best training solutions for our customers.</span>
+			<span>Our training solutions rightly expresses our unmatchable finesse which we have accrue, providing the training all these years for our global customers. </span>
+			<h5>Team @ Xoom Trainings</h5>
+			<span>We have a team of tech-savvy professionals, trainers who are incomparably talented in providing the training (in accordance to the modernized pedagogical approach). Our experts are vibrantly au fait at making learning a wonderful experience through a combination of the object-oriented training strategies and innovational methodologies of problem-solving attitude.</span>
+			<h5>Yearning for quality-based, affordable training solutions? </h5>
+			<span>Rooting out the barriers from your way to success by providing you effective training solutions. Just get on with wonderful learning experience only at XoomTrainings.com. </span>
+			<span>If you are the one who is on the lookout for quality training then it is quintessential that you should get in touch with us. Just get in touch with us to know more about us. Give us a call or request a callback from one of team experts today..</span>
+
+		</div>
+	</div>
+</div>
+
+<div class="foot-main">
+	<div class="container no-pad">
+		<div class="row">
+			<div class="col-md-4">
+				<ul>
+					<h4>COURSES</h4>
+					<li><a href="#">Home</a></li>
+					<li><a href="aboutus">About US</a></li>
+					<li><a href="services">Services</a></li>
+					<li><a href="home/checkout">Payments</a></li>
+					<li><a href="http://www.xoomtrainings.com/blog/">Blog</a></li>
+					<li><a href="careers">Careers </a></li>
+					 <li><a href="contact">Contact</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-md-4">
+				<ul>
+					<h4>REACH OUT TO US 27x7</h4>
+					<li>For courses related info: </li>
+					<li>+1-610-686-8077</li>
+					<li> Email us:   course@xoomtrainings.com</li>
+					<li>For Support: </li>
+					<li> +91-404-018-3355 (India)</li>
+					<li>Email us:  contact@xoomtrainings.com</li>
+				</ul>
+			</div>
+			<div class="col-md-4 text-center">
+				<h4>CONNECT WITH US</h4>
+				<a class="youtube pop-upper" title="share with: youtube" href="https://www.youtube.com/channel/UCcUqQgMe_uXB6WkgibwTz4g" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+
+				<a class="google-plus pop-upper" title="share with: google-plus" href="https://plus.google.com/u/0/110513710630949570051/posts" target="_blank">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+					</span> 
+				</a>
+
+				<a class="facebook pop-upper" title="share with: facebook" href="https://www.facebook.com/pages/Xoom-Trainings/436960616453388?fref=ts" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+					</span> 
+				</a>
+
+				<a class="twitter pop-upper" title="share with: twitter" href="https://twitter.com/xoomtrainings" target="_blank"> 
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+
+				<a class="linkedin pop-upper" title="share with: linkedin" href="https://www.linkedin.com/in/xoomtrainings" target="_blank">
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
+				
+				<h4>For futer updates</h4>
+				<div class="row">
+					<div class="input-group ">
+						<input class="btn btn-lg subscribeinput" name="email" id="email" type="email" placeholder="Email id" required="">
+						<button class="btn btn-info btn-lg subscribebutton" type="submit">Subscribe</button>
+					</div>
+
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-lg-2 col-md-2 col-md-2 col-sm-2">
+					<a href="#" class="back-to-top"> <i class="fa fa-chevron-circle-up fa-3x"></i></a>
+				</div>
+			</div>
+		</div> 
+	</div>
+</div>
+<div class="col-md-12 payment text-center"> 
+	<p>100% Secure Payments. All major credit &#38; debit cards accepted Or Pay by Paypal.</p>
+	<img src="assets/images/debit.png" alt="debit" /> 
+</div>
+<div class="col-md-12 foot-copyright">
+	<div class="container no-pad">
+		<div class="row">
+			<div class="col-md-6">
+				<span>2014 - 2015 powered by Innovin IT Solutions Pvt. LTD.. All Rights Reserved. &nbsp; &nbsp;</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<a href="#">TERMS &#38; CONDITIONS</a> &nbsp;   
+				<a href="#">PRIVACY POLICY</a>  &nbsp;                  
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	jQuery(document).ready(function() {
+		var offset = 250;
+		var duration = 300;
+		jQuery(window).scroll(function() {
+			if (jQuery(this).scrollTop() > offset) {
+				jQuery('.back-to-top').fadeIn(duration);
+			} else {
+				jQuery('.back-to-top').fadeOut(duration);
+			}
+		});
+
+		jQuery('.back-to-top').click(function(event) {
+			event.preventDefault();
+			jQuery('html, body').animate({scrollTop: 0}, duration);
+			return false;
+		})
+	});
+</script>

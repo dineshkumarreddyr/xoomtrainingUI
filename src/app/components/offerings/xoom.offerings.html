@@ -1,0 +1,229 @@
+<div class="container-fluid home-banner">
+	<img src="assets/images/books.jpg" class="img-responsive" alt="Background image" />
+	<div class="usphone">
+		<h4 class="text-center">US: +1-610-686-8077 &nbsp;&nbsp; IN: +91-40-40183355</h4>
+	</div>
+
+	<div class="textbanner container-fluid">
+		<div class="row">
+			<h1 class="text-center">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</h1>
+			<div class="browse-course">
+
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" ng-model="searchword" ng-keypress="keyword($event)" placeholder="Search Courses" class="ng-pristine ng-valid ng-touched" style="">
+
+						<i class="fa fa-search"></i>
+					</div>
+					<div class="col-md-1 orword">
+						<span>OR</span>
+					</div>
+
+					<div class="col-md-5"> 
+
+					<a class="btn btn-info btn-lg subscribebuttonbanner" ui-sref="home.list">Browse all courses</a> 
+					</div>
+				</div>
+				<div class="row learners">
+					<div class="col-md-3 allignment">
+						<h4>1234</h4>
+						<p>Lorem Ipsum </p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+ Hrs</h4>
+						<p>Lorem Ipsum</p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+ </h4>
+						<p>Lorem Ipsum</p>
+					</div>
+					<div class="col-md-3 allignment">
+						<h4>1234+</h4>
+						<p>Lorem</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row testing">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Sap" style="">Sap</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Java</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Hadoop</a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Sap" style="">Cognos</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Bigdata</a>
+						</div>
+						<div class="col-md-4 coursebuttons">
+							<a href="#" title="Beginner Courses" style="">Pega</a>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="slidedown text-center">
+		<div>
+			<a href="/home/offerings#popular">
+				<i class="fa fa-chevron-down"></i>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="home-quote">       
+	<div class="text-center col-md-12 bottom-margin">
+		<h1 >Lorem ipsum dolor sit amet Lorem ipsum</h1>
+		<h2>Lorem ipsum dolor sit amet </h2>
+	</div>
+	<!--popular courses starts-->
+	<div class="container">
+		<div class="row bottom-margin">
+			<div class="col-md-12">
+				<div class="col-md-4">
+					<a href="#">
+						<i class="icon big rounded fa fa-calendar"></i>
+						<h3>Flexible Schedule</h3>
+					</a>
+					<p>Reschedule your Batch/Class at Your Convenience</p>
+				</div>
+				<div class="col-md-4">
+					<a href="#">
+						<i class="icon big rounded fa fa-desktop"></i>
+						<h3>Upcoming Classes</h3>
+					</a>
+					<p>learn from your experts and get Real-Time Guidance</p>
+				</div>
+				<div class="col-md-4">
+					<a href="#">
+						<i class="icon big rounded fa fa-clock-o"></i>
+						<h3>24 x 7 Support</h3>
+					</a>
+					<p>learn from your experts and get Real-Time Guidance</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<h2 id="popular">Recommended Courses</h2>
+	<div class="row popular grid">
+		<div class="col-md-3 courses grid-item" ng-repeat="course in allCourses | filter:{xtcoursetype: 'popular'}">
+			<a ui-sref="home.detail({courseId:'{{course.xtcourseid}}'})">
+				<div class="recommended-each">
+					<img ng-src="{{course.xtcourseimg}}" alt="sap course">
+					<div class="coursedetail">
+						<div class="col-md-11 overlay">
+
+							Online Classes: 30 Hrs<br/>
+							Assignments: 25 Hrs<br/>
+							Project: 20 Hrs<br/>
+							Lifetime Access<br/>
+						</div>
+						<div class="course-title">{{course.xtcoursename}}</div>
+						<div class="clearfix course-counts">
+							<div class="col-md-7 greenText"><span ng-show="othercountry">$ {{course.xtusprice}}/-</span> <span ng-show="othercountry && indian">|</span><span ng-show="indian"> Rs {{course.xtinrprice}}/-</span></div>
+							<div class="col-md-5 hours"><img src="assets/images/hours.png" alt="hours">24 Hours</div>
+						</div>
+						<div class="clearfix course-bottom">
+							<div class="col-md-6 learners-count"><span>{{course.courselearners}} Learners</span></div>
+							<div class="col-md-6 course-rating text-right">
+								<i class="fa fa-star"></i> 
+								<i class="fa fa-star"></i> 
+								<i class="fa fa-star"></i> 
+								<i class="fa fa-star"></i> 
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="row text-center">
+		<a ui-sref="home.list" class="btn btn-info btn-lg subscribebutton">Browse all courses</a>
+	</div>
+</div>
+<div class="home-quote margin-top-20">
+	<div class="container demovideos">
+		<div class="row">
+			<div class="col-md-6 col-xs-12 leftvid"> <img class="img-responsive" src="assets/images/live-video.jpg" > </div>
+			<div class="col-md-6">
+				<ul>
+					<li>
+						<div class="row padding-bottom-15">
+							<div class="clearfix col-md-4">
+								<img class="img-responsive" src="assets/images/vid_1.png" alt="Hadoop Training" />
+							</div>
+							<div class="clearfix col-md-8">
+								<h4 class="text-left no-mar">Hadoop - Demo Video - Lorem Ipsum Dolor Sit Amet</h4>
+								<div class="seperator"></div>
+								<span class="text-left">
+									Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor 
+								</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row padding-bottom-15">
+							<div class="clearfix col-md-4">
+								<img class="img-responsive" src="assets/images/vid_2.png" alt="Hadoop Training" />
+							</div>
+							<div class="clearfix col-md-8">
+								<h4 class="text-left no-mar">Hadoop - Demo Video - Lorem Ipsum Dolor Sit Amet</h4>
+								<div class="seperator"></div>
+								<span class="text-left">
+									Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor 
+								</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row">
+							<div class="clearfix col-md-4">
+								<img class="img-responsive" src="assets/images/vid_3.jpg" alt="Hadoop Training" />
+							</div>
+							<div class="clearfix col-md-8">
+								<h4 class="text-left no-mar">Hadoop - Demo Video - Lorem Ipsum Dolor Sit Amet</h4>
+								<div class="seperator"></div>
+								<span class="text-left">
+									Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor 
+								</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$('a[href*=#]:not([href=#])').click(function() {
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: target.offset().top
+					}, 1000);
+					return false;
+				}
+			}
+		});
+	});
+</script>
